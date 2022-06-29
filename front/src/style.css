@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+    background-color: rgb(75, 75, 75)
+}
+
+footer{
+    background-color: black;
+    color: rgba(255, 255, 255, 0.699);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 30px;
+    text-align: right;
+}
+footer p{
+    margin-right: 30px;
+}
+
+.carousel-container{
+    width: 50vw;
+    margin: 20px auto;
+
+}
+
+.carousel-container h2{
+    text-align: center;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    margin-bottom: 20px;
+}
+
+.carousel-img{
+    border-radius: 5px;
+}
+.carousel-container h3{
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
