@@ -4,15 +4,17 @@
     border: 0;
 }
 body{
-    background-color: rgb(75, 75, 75)
+    background-color: rgb(75, 75, 75);
 }
 
+
+.container{
+    display: flex;
+}
 footer{
     background-color: black;
     color: rgba(255, 255, 255, 0.699);
-    position: absolute;
     width: 100%;
-    bottom: 0;
     height: 30px;
     text-align: right;
 }
@@ -26,18 +28,25 @@ footer p{
 
 }
 
-.carousel-container h2{
+.carousel-container h3{
     text-align: center;
     color: white;
-    -webkit-text-stroke-width: 1px;
     margin-bottom: 20px;
 }
 
-.carousel-img{
-    border-radius: 5px;
-}
-.carousel-container h3{
+.carousel-container h2{
     -webkit-text-fill-color: white; /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
+}
+
+.trending-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+.trending-container .card{
+    margin: 20px;
 }
