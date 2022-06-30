@@ -22,8 +22,13 @@ footer p{
     margin-right: 30px;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 .carousel-container{
-    width: 50vw;
+    width: 1000px;
     margin: 20px auto;
 
 }
@@ -43,10 +48,26 @@ footer p{
 .trending-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    max-width: 80vw;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .trending-container .card{
     margin: 20px;
+}
+
+@media screen and (max-width:1000px) {
+    .carousel-container{
+        width: 95vw;
+    }
+    .trending-container{
+        grid-template-columns: 1fr 1fr;
+        max-width: 90vw;
+    }
+}
+
+@media screen and (max-width:600px){
+    .trending-container{
+        grid-template-columns: 1fr;
+    }
 }
