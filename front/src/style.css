@@ -48,7 +48,7 @@ a{
 .trending-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    max-width: 1000px;
+    max-width: 80vw;
     margin: 0 auto;
 }
 
@@ -56,18 +56,74 @@ a{
     margin: 20px;
 }
 
-@media screen and (max-width:1000px) {
+.top-container{
+    max-width: 80vw;
+    margin: 0 auto;
+}
+
+.top-container .card{
+    margin: 20px 0;
+    max-width: 25vw;
+}
+
+.top-title{
+    text-align: center;
+    color: white;
+    margin: 20px 0;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
+}
+
+.top-card{
+    display: flex;
+    margin: 10px 0;
+    background-color: rgb(219, 219, 219);
+    border-radius: 10px;
+}
+
+.top-card img{
+    max-width: 300px;
+    object-fit: cover;
+}
+
+.top-card .info{
+    margin: 30px 0 10px 10px;
+}
+
+
+
+@media screen and (max-width:1200px) {
     .carousel-container{
-        width: 95vw;
+        width: 80vw;
     }
     .trending-container{
         grid-template-columns: 1fr 1fr;
         max-width: 90vw;
     }
+    .top-card img{
+        max-width: 200px;
+    }
+    .top-container{
+        max-width: 90vw;
+    }
 }
 
-@media screen and (max-width:600px){
+@media screen and (max-width:700px){
+    .carousel-container{
+        width: 100vw;
+    }
     .trending-container{
         grid-template-columns: 1fr;
     }
+    .top-card img{
+        max-width: 100%;
+    }
+    .top-container{
+        max-width: 85vw;
+    }
+    .top-card{
+        display: block;
+    }
+   
 }

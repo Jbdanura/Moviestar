@@ -6,7 +6,7 @@ const Trending = ({trending}) => {
         <div className="trending-container">
             {trending.map(movie=>{
                 const imageSrc = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
-                return <Card>
+                return <Card key={movie.id}>
                 <Card.Img variant="top" src={imageSrc} />
                 <Card.Body>
                   <Card.Title>{movie.original_title}</Card.Title>

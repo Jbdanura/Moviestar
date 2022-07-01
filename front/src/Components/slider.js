@@ -6,7 +6,7 @@ const Slider = ({trending}) => {
         <Carousel>
         {trending.slice(0,7).map((movie => {
            const imageSrc = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
-           return <Carousel.Item>   
+           return <Carousel.Item key={movie.id}>   
                  <img
                     className="d-block w-100 carousel-img"
                     src={imageSrc}
