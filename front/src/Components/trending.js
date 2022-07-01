@@ -9,7 +9,7 @@ const Trending = ({trending}) => {
                 return <Card key={movie.id}>
                 <Card.Img variant="top" src={imageSrc} />
                 <Card.Body>
-                  <Card.Title>{movie.original_title}</Card.Title>
+                  <Card.Title className="trending-title">{movie.original_title}</Card.Title>
                   <Card.Text>
                     {movie.overview}
                   </Card.Text>

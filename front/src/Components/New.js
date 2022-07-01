@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import {Button,Pagination } from "react-bootstrap"
 
-const Top = (props) => {
-    const [top, setTop]  = useState([])
+const New = ({apiKey}) => {
+    const [movies, setMovies]  = useState([])
     const [page,setPage] = useState(1)
 
     useEffect(()=>{
-        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=vote_count.desc&page=${page}&`)
-        .then(result => setTop(result.data.results))
+        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=release_date.desc&page=${page+20}`)
+        .then(result => setMovies(result.data.results))
     },[page])
 
 
@@ -23,17 +23,17 @@ const Top = (props) => {
 
     return (
         <>
-            <h3 className="individual-title">Top movies of all time</h3>
+            <h3 className="individual-title">New movies</h3>
             <div className="card-container">
-                {top.map(movie=>{
-                    const imgSrc = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+                {movies.map(movie=>{
+                    const imgSrc = `https://image.tmdb.org/t/p/original/${movie.poster_path}`
                     return (
-                        <div className="card-item" key={movie.id}>
-                            <img src={imgSrc}></img>
+                        <div className="card-item new-item" key={movie.id}>
+                            <img className="new-img" alt={movie.original_title} src={imgSrc}></img>
                             <div className="info">
                                 <h4>{movie.original_title}</h4>
                                 <p>{movie.overview}</p>
-                                <Button variant="info">More Info</Button>{' '}
+                                <h6>Release date: {movie.release_date}</h6>
                             </div>
                         </div>
                     )
@@ -51,4 +51,4 @@ const Top = (props) => {
     )
 }
 
-export default Top
+export default New
