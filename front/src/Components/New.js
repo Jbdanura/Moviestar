@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import {Button,Pagination } from "react-bootstrap"
+import {Button,Pagination,Dropdown,DropdownButton } from "react-bootstrap"
 
-const New = ({apiKey}) => {
+const New = ({genres,apiKey}) => {
     const [movies, setMovies]  = useState([])
     const [page,setPage] = useState(1)
+    const [genre,setGenre] = useState("All")
+    const [genreName,setGenreName] = useState("All")
 
-    useEffect(()=>{
-        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=release_date.desc&page=${page+20}`)
-        .then(result => setMovies(result.data.results))
-    },[page])
+    useEffect(async()=>{
+        if(genre==="All"){
+          await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=release_date.desc&page=${page+70}`)
+          .then(result=>setMovies(result.data.results))
+        } else{
+          await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=release_date.desc&with_genres=${genre}&page=${page+70}`)
+          .then(result=>setMovies(result.data.results))
+        }
+    },[genre,page])
 
 
     let items = [];
-    for (let number = 1; number <= 5; number++) {
+    for (let number = page; number <= page+4; number++) {
       items.push(
         <Pagination.Item onClick={()=>setPage(number)} key={number} active={number === page}>
           {number}
@@ -23,7 +30,16 @@ const New = ({apiKey}) => {
 
     return (
         <>
-            <h3 className="individual-title">New movies</h3>
+        <h3 className="individual-title">New movies</h3>
+        <DropdownButton  style={{display:"inline"}} id="dropdown-basic-button" className="dropdown" title="Genre: ">
+            <Dropdown.Item onClick={()=>{setGenre("All") 
+            setGenreName("All")}}>All</Dropdown.Item>
+            {genres.map(genre=>{
+            return <Dropdown.Item onClick={()=>{setGenre(genre.id)
+            setGenreName(genre.name)}} key={genre.id}>{genre.name}</Dropdown.Item>
+          })}
+        </DropdownButton>
+        <span style={{display:"inline"}} className="current-genre">{genreName}</span>
             <div className="card-container">
                 {movies.map(movie=>{
                     const imgSrc = `https://image.tmdb.org/t/p/original/${movie.poster_path}`

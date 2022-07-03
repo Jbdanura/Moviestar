@@ -2,14 +2,14 @@ import React from "react"
 import Slider from "./slider"
 import Trending from "./trending"
 
-const Home = ({trending}) => {
+const Home = ({trending,genres,apiKey}) => {
     return (
         <>
         <div className="carousel-container">
         <h3>Trending movies</h3>
         <Slider trending={trending}/>
         </div>
-        <Trending trending={trending}/>
+        <Trending genres={genres} apiKey={apiKey}/>
         </>
     )
 }

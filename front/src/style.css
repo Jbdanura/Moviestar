@@ -99,8 +99,14 @@ a{
 .trending-container .card{
     margin: 20px;
 }
-
-
+.dropdown{
+    margin-left: 11vw;
+}
+.current-genre{
+    color: white;
+    font-size: 18px;
+    margin-left: 20px;
+}
 @media screen and (max-width:1200px) {
     .carousel-container{
         width: 80vw;
@@ -118,6 +124,7 @@ a{
     .new-img{
         width: 10vw;
     }
+
 }
 
 @media screen and (max-width:700px){
@@ -141,5 +148,6 @@ a{
     }
     .new-img{
         width: 20vw;
-    }
+    }   
+
 }

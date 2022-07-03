@@ -23,11 +23,11 @@ const App = () => {
    return(
         <div>
          <BrowserRouter>
-            <Menu genres={genres}/>
+            <Menu/>
             <Routes>
-               <Route path="/" element={<Home trending={trending}/>}/>
-               <Route path="/top" element={<Top apiKey={apiKey} />}/>
-               <Route path="/new" element={<New apiKey={apiKey}/>}/>
+               <Route path="/" element={<Home trending={trending} genres={genres} apiKey={apiKey}/>}/>
+               <Route path="/top" element={<Top apiKey={apiKey} genres={genres} />}/>
+               <Route path="/new" element={<New apiKey={apiKey} genres={genres}/>}/>
                <Route path="/category/:category" element={<Category apiKey={apiKey}/>}/>
             </Routes>
          </BrowserRouter>

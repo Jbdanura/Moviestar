@@ -10,12 +10,6 @@ const Menu = ({genres}) => {
          <Navbar.Toggle aria-controls="basic-navbar-nav" />
          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-            <NavDropdown title="Genres" id="basic-nav-dropdown" className="menu-genres">
-               {genres.map(genre=>{
-                  const categoryLink = `/category/${genre.name}`
-                  return <NavDropdown.Item as="div" key={genre.name}><Link to={categoryLink}>{genre.name}</Link></NavDropdown.Item>
-               })}
-            </NavDropdown>
             <Nav.Link as="div"><Link to="/top">Top</Link></Nav.Link>
             <Nav.Link as="div"><Link to="/new">New</Link></Nav.Link>
             </Nav>
