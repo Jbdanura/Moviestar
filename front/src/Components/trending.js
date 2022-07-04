@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react"
-import { Card, Button,Dropdown,DropdownButton,Pagination } from "react-bootstrap"
+import { Card, Button,Dropdown,DropdownButton,Pagination,Spinner } from "react-bootstrap"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 const Trending = ({genres,apiKey}) => {
     const [movies,setMovies] = useState([])
@@ -39,8 +40,10 @@ const Trending = ({genres,apiKey}) => {
         </DropdownButton>
         <span style={{display:"inline"}} className="current-genre">{genreName}</span>
         <div className="trending-container">
+        {movies.length === 0 && <Spinner style={{margin:"10px 0 0 100px"}}  animation="border"/>}
             {movies.map(movie=>{
                 const imageSrc = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+                const linkDetail = `/movie/${movie.id}`
                 return <Card key={movie.id}>
                 <Card.Img variant="top" src={imageSrc} />
                 <Card.Body>
@@ -48,7 +51,7 @@ const Trending = ({genres,apiKey}) => {
                   <Card.Text>
                     {movie.overview}
                   </Card.Text>
-                  <Button variant="primary">View information</Button>
+                  <Button variant="primary"><Link to={linkDetail}>View information</Link></Button>
                 </Card.Body>
               </Card>
             })}
@@ -60,7 +63,7 @@ const Trending = ({genres,apiKey}) => {
                 <Pagination.Next onClick={()=>setPage(page+1)}/>
                 <Pagination.Last onClick={()=>setPage(20)}/>
             </Pagination>
-            <br />
+          <br />
         </>
     )
 }

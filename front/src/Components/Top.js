@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import {Button,Pagination,Dropdown,DropdownButton } from "react-bootstrap"
+import {Button,Pagination,Dropdown,DropdownButton, Spinner} from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const Top = (props) => {
     const [movies, setMovies]  = useState([])
@@ -41,15 +42,17 @@ const Top = (props) => {
             </DropdownButton>
             <span style={{display:"inline"}} className="current-genre">{genreName}</span>
             <div className="card-container">
+                {movies.length === 0 && <Spinner style={{margin:"10px 0 0 200px"}}  animation="border"/>}
                 {movies.map(movie=>{
                     const imgSrc = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+                    const linkDetail = `/movie/${movie.id}`
                     return (
                         <div className="card-item" key={movie.id}>
                             <img src={imgSrc}></img>
                             <div className="info">
                                 <h4>{movie.original_title}</h4>
                                 <p>{movie.overview}</p>
-                                <Button variant="info">More Info</Button>{' '}
+                                <Button variant="info"><Link to={linkDetail}>More info</Link></Button>{' '}
                             </div>
                         </div>
                     )

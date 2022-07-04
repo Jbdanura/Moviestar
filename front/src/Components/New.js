@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import {Button,Pagination,Dropdown,DropdownButton } from "react-bootstrap"
+import {Button,Pagination,Dropdown,DropdownButton, Spinner} from "react-bootstrap"
 
 const New = ({genres,apiKey}) => {
     const [movies, setMovies]  = useState([])
@@ -41,8 +41,10 @@ const New = ({genres,apiKey}) => {
         </DropdownButton>
         <span style={{display:"inline"}} className="current-genre">{genreName}</span>
             <div className="card-container">
+                {movies.length === 0 && <Spinner style={{margin:"10px 0 0 200px"}}  animation="border"/>}
                 {movies.map(movie=>{
                     const imgSrc = `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    const linkDetail = `/movie/${movie.id}`
                     return (
                         <div className="card-item new-item" key={movie.id}>
                             <img className="new-img" alt={movie.original_title} src={imgSrc}></img>

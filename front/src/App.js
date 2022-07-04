@@ -8,6 +8,7 @@ import Top from './Components/Top';
 import Home from './Components/home';
 import New from './Components/New';
 import Category from './Components/Category';
+import Movie from './Components/Movie';
 
 const App = () => { 
    const [genres,setGenres] = useState([])
@@ -23,12 +24,13 @@ const App = () => {
    return(
         <div>
          <BrowserRouter>
-            <Menu/>
+            <Menu apiKey={apiKey}/>
             <Routes>
                <Route path="/" element={<Home trending={trending} genres={genres} apiKey={apiKey}/>}/>
                <Route path="/top" element={<Top apiKey={apiKey} genres={genres} />}/>
                <Route path="/new" element={<New apiKey={apiKey} genres={genres}/>}/>
                <Route path="/category/:category" element={<Category apiKey={apiKey}/>}/>
+               <Route path="/movie/:id" element={<Movie apiKey={apiKey}/>}/>
             </Routes>
          </BrowserRouter>
        </div>
