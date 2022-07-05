@@ -11,7 +11,7 @@ const Slider = ({trending}) => {
                  <img
                     className="d-block w-100 carousel-img"
                     src={imageSrc}
-                    alt={movie.original_title}
+                    alt={movie.title}
                  />
               <Carousel.Caption>
                  <h2>{movie.original_title}</h2>

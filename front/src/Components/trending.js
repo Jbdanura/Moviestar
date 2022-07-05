@@ -3,21 +3,21 @@ import { Card, Button,Dropdown,DropdownButton,Pagination,Spinner } from "react-b
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-const Trending = ({genres,apiKey}) => {
+const Trending = ({genres,apiKey,translations, language}) => {
     const [movies,setMovies] = useState([])
-    const [genre,setGenre] = useState("All")
-    const [genreName,setGenreName] = useState("All")
+    const [genre,setGenre] = useState("")
+    const [genreName,setGenreName] = useState("")
     const [page,setPage] = useState(1)
 
     useEffect(async()=>{
-      if(genre==="All"){
-        await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&page=${page}`)
+      if(genre===""){
+        await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=${language}&sort_by=popularity.desc&page=${page}`)
         .then(result=>setMovies(result.data.results))
       } else{
-        await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&with_genres=${genre}&page=${page}`)
+        await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=${language}&sort_by=popularity.desc&with_genres=${genre}&page=${page}`)
         .then(result=>setMovies(result.data.results))
       }
-    },[genre,page])
+    },[genre,page,language])
 
     let items = [];
     for (let number = page; number <= page+4; number++) {
@@ -29,9 +29,9 @@ const Trending = ({genres,apiKey}) => {
     }
     return (
         <>
-        <DropdownButton  style={{display:"inline", marginLeft:"11vw"}} id="dropdown-basic-button" className="dropdown-genre" title="Genre: ">
-            <Dropdown.Item onClick={()=>{setGenre("All") 
-            setGenreName("All")}}>All</Dropdown.Item>
+        <DropdownButton  style={{display:"inline", marginLeft:"11vw"}} id="dropdown-basic-button" className="dropdown-genre" title={translations.genreDropdown}>
+            <Dropdown.Item onClick={()=>{setGenre("") 
+            setGenreName("")}}>{translations.allGenres}</Dropdown.Item>
             {genres.map(genre=>{
             return <Dropdown.Item onClick={()=>{setGenre(genre.id)
             setGenreName(genre.name)}} key={genre.id}>{genre.name}</Dropdown.Item>
@@ -47,11 +47,11 @@ const Trending = ({genres,apiKey}) => {
                 return <Card key={movie.id}>
                 <Card.Img variant="top" src={imageSrc} />
                 <Card.Body>
-                  <Card.Title className="trending-title">{movie.original_title}</Card.Title>
+                  <Card.Title className="trending-title">{movie.title}</Card.Title>
                   <Card.Text>
                     {movie.overview}
                   </Card.Text>
-                  <Button variant="primary"><Link to={linkDetail}>View information</Link></Button>
+                  <Button variant="primary"><Link to={linkDetail}>{translations.viewInformation}</Link></Button>
                 </Card.Body>
               </Card>
             })}
@@ -61,7 +61,7 @@ const Trending = ({genres,apiKey}) => {
                 <Pagination.Prev onClick={()=>setPage(page-1)}/>
                 {items}
                 <Pagination.Next onClick={()=>setPage(page+1)}/>
-                <Pagination.Last onClick={()=>setPage(20)}/>
+                <Pagination.Last onClick={()=>setPage(page+20)}/>
             </Pagination>
           <br />
         </>

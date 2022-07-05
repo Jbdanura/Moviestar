@@ -6,19 +6,18 @@ import { Link } from "react-router-dom"
 const Top = (props) => {
     const [movies, setMovies]  = useState([])
     const [page,setPage] = useState(1)
-    const [genre,setGenre] = useState("All")
-    const [genreName,setGenreName] = useState("All")
+    const [genre,setGenre] = useState("")
+    const [genreName,setGenreName] = useState("")
 
     useEffect(async()=>{
-        if(genre==="All"){
-          await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=vote_count.desc&page=${page}`)
+        if(genre===""){
+          await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=${props.language}&sort_by=vote_count.desc&page=${page}`)
           .then(result=>setMovies(result.data.results))
         } else{
-          await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=en-US&sort_by=vote_count.desc&with_genres=${genre}&page=${page}`)
+          await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=${props.language}&sort_by=vote_count.desc&with_genres=${genre}&page=${page}`)
           .then(result=>setMovies(result.data.results))
         }
-    },[genre,page])
-
+    },[genre,page,props.language])
 
     let items = [];
     for (let number = page; number <= page+4; number++) {
@@ -28,13 +27,15 @@ const Top = (props) => {
         </Pagination.Item>,
       );
     }
-
-    return (
+    if(!props.translations){
+        return null
+    } else {
+        return (
         <>
             <h3 className="individual-title">Top movies of all time</h3>
-            <DropdownButton  style={{display:"inline"}} id="dropdown-basic-button" className="dropdown" title="Genre: ">
-                <Dropdown.Item onClick={()=>{setGenre("All") 
-                setGenreName("All")}}>All</Dropdown.Item>
+            <DropdownButton  style={{display:"inline", marginLeft:"11vw"}} id="dropdown-basic-button" className="dropdown" title={props.translations.genreDropdown}>
+                <Dropdown.Item onClick={()=>{setGenre("") 
+                setGenreName("")}}>{props.translations.allGenres}</Dropdown.Item>
                 {props.genres.map(genre=>{
                 return <Dropdown.Item onClick={()=>{setGenre(genre.id)
                 setGenreName(genre.name)}} key={genre.id}>{genre.name}</Dropdown.Item>
@@ -52,7 +53,7 @@ const Top = (props) => {
                             <div className="info">
                                 <h4>{movie.original_title}</h4>
                                 <p>{movie.overview}</p>
-                                <Button variant="info"><Link to={linkDetail}>More info</Link></Button>{' '}
+                                <Button variant="info"><Link to={linkDetail}>{props.translations.moreInfo}</Link></Button>{' '}
                             </div>
                         </div>
                     )
@@ -63,11 +64,11 @@ const Top = (props) => {
                 <Pagination.Prev onClick={()=>setPage(page-1)}/>
                 {items}
                 <Pagination.Next onClick={()=>setPage(page+1)}/>
-                <Pagination.Last onClick={()=>setPage(20)}/>
+                <Pagination.Last onClick={()=>setPage(page+20)}/>
             </Pagination>
             <br />
         </>
-    )
+    )}
 }
 
 export default Top

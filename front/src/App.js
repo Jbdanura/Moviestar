@@ -7,7 +7,6 @@ import {BrowserRouter, Routes,Route } from 'react-router-dom';
 import Top from './Components/Top';
 import Home from './Components/home';
 import New from './Components/New';
-import Category from './Components/Category';
 import Movie from './Components/Movie';
 import translationsContent from "./translations.json"
 
@@ -25,6 +24,7 @@ const App = () => {
       if(language === "es"){
          setTranslations(translationsContent.Spanish)
       } else{
+         setLanguage("en")
          setTranslations(translationsContent.English)
       }
       const genresPromise = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=${language}`)
@@ -42,11 +42,10 @@ const App = () => {
          <BrowserRouter>
             <Menu apiKey={apiKey} translations={translations} changeLanguage={changeLanguage}/>
             <Routes>
-               <Route path="/" element={<Home trending={trending} genres={genres} apiKey={apiKey} />}/>
-               <Route path="/top" element={<Top apiKey={apiKey} genres={genres} />}/>
-               <Route path="/new" element={<New apiKey={apiKey} genres={genres}/>}/>
-               <Route path="/category/:category" element={<Category apiKey={apiKey}/>}/>
-               <Route path="/movie/:id" element={<Movie apiKey={apiKey}/>}/>
+               <Route path="/" element={<Home trending={trending} genres={genres} apiKey={apiKey} translations={translations} language={language}/>}/>
+               <Route path="/top" element={<Top apiKey={apiKey} genres={genres} translations={translations} language={language}/>}/>
+               <Route path="/new" element={<New apiKey={apiKey} genres={genres} translations={translations} language={language}/>}/>
+               <Route path="/movie/:id" element={<Movie apiKey={apiKey} translations={translations} language={language}/>}/>
             </Routes>
          </BrowserRouter>
          <footer>

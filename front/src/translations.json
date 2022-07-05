@@ -2,11 +2,27 @@
     "English": {
         "top": "Top",
         "new": "New",
-        "search": "Search"
+        "search": "Search",
+        "trendingTitle": "Trending movies",
+        "genreDropdown": "Genre: ",
+        "allGenres": "All",
+        "viewInformation":"View information",
+        "moreInfo": "More info",
+        "release": "Release date: ",
+        "genres": "Genres: ",
+        "similar": "Similar movies: "
     },
     "Spanish":{
         "top": "Mejores",
         "new": "Nuevas",
-        "search": "Buscar"
+        "search": "Buscar",
+        "trendingTitle": "Peliculas en tendencia",
+        "genreDropdown": "Genero: ",
+        "allGenres": "Todos",
+        "viewInformation":"Ver informacion",
+        "moreInfo": "Mas info",
+        "release": "Fecha de lanzamiento: ",
+        "genres": "Generos: ",
+        "similar": "Peliculas similares: "
     }
 }

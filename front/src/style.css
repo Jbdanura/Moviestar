@@ -108,6 +108,7 @@ a{
     margin: 0 auto;
     background-color:rgb(222, 223, 222);
     width: 60vw;
+    padding-bottom: 50px;
 }
 
 .movie-detail .info{
@@ -117,6 +118,9 @@ a{
 .similar{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.similar-movie{
+    margin: 5px 0;
 }
 .similar img{
     width: 100%;
@@ -163,6 +167,21 @@ ul {
     .movie-detail{
         width: 80vw;
     }
+    .movie-detail .info h2{
+        font-size: 30px;
+        text-align: center;
+    }
+    .movie-detail .info p{
+        font-size: 18px;
+        text-align: left;
+        margin-top: 30px;
+    }
+    .movie-detail .info li{
+        margin-top: 5px;
+    }
+    .movie-detail span{
+        font-size: 20px;
+    }
     .similar{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -197,6 +216,6 @@ ul {
         width: 20vw;
     }   
     .movie-detail {
-        width: 100vw;
+        width: 95vw;
     }
 }
