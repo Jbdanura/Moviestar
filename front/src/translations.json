@@ -1,0 +1,12 @@
+{
+    "English": {
+        "top": "Top",
+        "new": "New",
+        "search": "Search"
+    },
+    "Spanish":{
+        "top": "Mejores",
+        "new": "Nuevas",
+        "search": "Buscar"
+    }
+}

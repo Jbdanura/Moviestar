@@ -29,7 +29,7 @@ const Trending = ({genres,apiKey}) => {
     }
     return (
         <>
-        <DropdownButton  style={{display:"inline"}} id="dropdown-basic-button" className="dropdown" title="Genre: ">
+        <DropdownButton  style={{display:"inline", marginLeft:"11vw"}} id="dropdown-basic-button" className="dropdown-genre" title="Genre: ">
             <Dropdown.Item onClick={()=>{setGenre("All") 
             setGenreName("All")}}>All</Dropdown.Item>
             {genres.map(genre=>{

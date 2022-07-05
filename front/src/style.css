@@ -7,10 +7,6 @@ body{
     background-color: rgb(75, 75, 75);
 }
 
-
-.container{
-    display: flex;
-}
 footer{
     background-color: black;
     color: rgba(255, 255, 255, 0.699);
@@ -99,9 +95,6 @@ a{
 .trending-container .card{
     margin: 20px;
 }
-.dropdown{
-    margin-left: 11vw;
-}
 .current-genre{
     color: white;
     font-size: 18px;
@@ -147,6 +140,9 @@ a{
 ul {
     list-style-type: none;
 }
+.dropdown{
+    margin-left: 30px;
+}
 @media screen and (max-width:1200px) {
     .carousel-container{
         width: 80vw;
@@ -172,6 +168,9 @@ ul {
         grid-template-columns: 1fr 1fr;
         width: 90%;
         margin: 0 auto;
+    }
+    .dropdown{
+        margin-left: 0px;
     }
 }
 
