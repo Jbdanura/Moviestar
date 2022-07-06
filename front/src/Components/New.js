@@ -16,6 +16,7 @@ const New = ({genres,apiKey,translations, language}) => {
           await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=release_date.desc&with_genres=${genre}&page=${page+70}`)
           .then(result=>setMovies(result.data.results))
         }
+        window.scrollTo(0,0)
     },[genre,page, language])
 
 
@@ -32,7 +33,7 @@ const New = ({genres,apiKey,translations, language}) => {
     } else {
       return (
         <>
-        <h3 className="individual-title">New movies</h3>
+        <h3 className="individual-title">{translations.newTitle}</h3>
         <DropdownButton  style={{display:"inline",marginLeft:"11vw"}} id="dropdown-basic-button" className="dropdown" title={translations.genreDropdown}>
             <Dropdown.Item onClick={()=>{setGenre("") 
             setGenreName("")}}>{translations.allGenres}</Dropdown.Item>

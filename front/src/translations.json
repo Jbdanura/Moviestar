@@ -10,7 +10,9 @@
         "moreInfo": "More info",
         "release": "Release date: ",
         "genres": "Genres: ",
-        "similar": "Similar movies: "
+        "similar": "Similar movies: ",
+        "topTitle": "Top movies of all time",
+        "newTitle": "New movies"
     },
     "Spanish":{
         "top": "Mejores",
@@ -23,6 +25,8 @@
         "moreInfo": "Mas info",
         "release": "Fecha de lanzamiento: ",
         "genres": "Generos: ",
-        "similar": "Peliculas similares: "
+        "similar": "Peliculas similares: ",
+        "topTitle": "Mejores peliculas de todos los tiempos",
+        "newTitle": "Nuevas peliculas"
     }
 }

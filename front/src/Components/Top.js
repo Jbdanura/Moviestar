@@ -17,6 +17,7 @@ const Top = (props) => {
           await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${props.apiKey}&language=${props.language}&sort_by=vote_count.desc&with_genres=${genre}&page=${page}`)
           .then(result=>setMovies(result.data.results))
         }
+        window.scrollTo(0,0)
     },[genre,page,props.language])
 
     let items = [];
@@ -32,7 +33,7 @@ const Top = (props) => {
     } else {
         return (
         <>
-            <h3 className="individual-title">Top movies of all time</h3>
+            <h3 className="individual-title">{props.translations.topTitle}</h3>
             <DropdownButton  style={{display:"inline", marginLeft:"11vw"}} id="dropdown-basic-button" className="dropdown" title={props.translations.genreDropdown}>
                 <Dropdown.Item onClick={()=>{setGenre("") 
                 setGenreName("")}}>{props.translations.allGenres}</Dropdown.Item>

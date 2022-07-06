@@ -17,6 +17,7 @@ const Trending = ({genres,apiKey,translations, language}) => {
         await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=${language}&sort_by=popularity.desc&with_genres=${genre}&page=${page}`)
         .then(result=>setMovies(result.data.results))
       }
+      window.scrollTo(0,0)
     },[genre,page,language])
 
     let items = [];

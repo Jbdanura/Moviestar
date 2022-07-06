@@ -15,6 +15,7 @@ const Movie = ({apiKey,translations,language}) => {
     .then(result=>setMovie(result.data))
     axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apiKey}&language=${language}&page=1`)
     .then(result=>setSimilar(result.data.results.splice(0,8)))
+    window.scrollTo(0,0)
   },[id,language])
 
   const movieDetails = () => {
