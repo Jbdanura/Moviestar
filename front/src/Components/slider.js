@@ -14,7 +14,7 @@ const Slider = ({trending}) => {
                     alt={movie.title}
                  />
               <Carousel.Caption>
-                 <h2>{movie.original_title}</h2>
+                 <h2>{movie.title}</h2>
               </Carousel.Caption>
            </Carousel.Item>
         }))}
